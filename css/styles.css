@@ -1,388 +1,242 @@
-/*
-============================================================
-ASSIGNMENT 1: RESPONSIVE PORTFOLIO WEBSITE
-CSC4035 Web Programming and Technologies
+/* -------------------------------
+   CSS VARIABLES
+--------------------------------*/
 
-Instructions:
-1. Complete all TODO sections
-2. Use CSS custom properties (variables) for colors and spacing
-3. Use Flexbox for at least one layout component
-4. Use CSS Grid for at least one layout component
-5. Implement mobile-first responsive design
-6. Add at least 3 breakpoints (mobile, tablet, desktop)
-
-DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
-============================================================
-*/
-
-/* ============================================================
-   CSS CUSTOM PROPERTIES (VARIABLES)
-   TODO: Define your color scheme and spacing variables
-   ============================================================ */
 :root {
-    /* Colors - TODO: Customize your color palette */
-    --color-primary: /* Your primary color */;
-    --color-primary-dark: /* Darker shade */;
-    --color-secondary: /* Secondary color */;
-    --color-text: /* Main text color */;
-    --color-text-light: /* Lighter text */;
-    --color-background: /* Page background */;
-    --color-background-alt: /* Alternate background */;
-    --color-border: /* Border color */;
-
-    /* Typography - TODO: Define your font sizes */
-    --font-family: /* Your font stack */;
-    --font-size-base: /* Base size, e.g., 16px */;
-    --font-size-sm: /* Small text */;
-    --font-size-lg: /* Large text */;
-    --font-size-xl: /* Extra large */;
-    --font-size-2xl: /* Headings */;
-    --font-size-3xl: /* Large headings */;
-
-    /* Spacing - TODO: Define spacing scale */
-    --spacing-xs: /* Extra small */;
-    --spacing-sm: /* Small */;
-    --spacing-md: /* Medium */;
-    --spacing-lg: /* Large */;
-    --spacing-xl: /* Extra large */;
-
-    /* Layout */
-    --max-width: /* Container max-width */;
-    --border-radius: /* Default border radius */;
-
-    /* Transitions */
-    --transition-fast: /* Fast transition */;
-    --transition-normal: /* Normal transition */;
+  --primary-color: #2563eb;
+  --secondary-color: #111827;
+  --background-color: #f9fafb;
+  --text-color: #333;
+  --spacing: 1rem;
+  --max-width: 1100px;
 }
 
-/* ============================================================
-   CSS RESET / BASE STYLES
-   TODO: Add your CSS reset
-   ============================================================ */
-*,
-*::before,
-*::after {
-    /* TODO: box-sizing, margin, padding reset */
-}
 
-html {
-    /* TODO: scroll-behavior, font-size */
+/* -------------------------------
+   GLOBAL STYLES
+--------------------------------*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    /* TODO: font-family, color, background-color, line-height */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 img {
-    /* TODO: Make images responsive */
+  max-width: 100%;
+  height: auto;
 }
 
-a {
-    /* TODO: Link styles */
+main {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 2rem;
 }
 
-a:hover {
-    /* TODO: Link hover state */
+
+/* -------------------------------
+   NAVIGATION (FLEXBOX)
+--------------------------------*/
+
+header {
+  background: var(--secondary-color);
+  color: white;
 }
 
-ul {
-    /* TODO: List reset */
+nav {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
 }
 
-/* ============================================================
-   UTILITY CLASSES
-   TODO: Create reusable utility classes
-   ============================================================ */
-.container {
-    /* TODO: Container styles
-     * - width: 100%
-     * - max-width
-     * - margin: 0 auto
-     * - padding
-     */
+nav h1 {
+  margin-bottom: 0.5rem;
 }
 
-/* ============================================================
-   BUTTONS
-   TODO: Style your buttons
-   ============================================================ */
-.btn {
-    /* TODO: Base button styles
-     * - display, padding
-     * - border, border-radius
-     * - font-size, font-weight
-     * - text-align, cursor
-     * - transition
-     */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
 }
 
-.btn--primary {
-    /* TODO: Primary button (filled) */
+nav a {
+  color: white;
+  text-decoration: none;
 }
 
-.btn--primary:hover {
-    /* TODO: Primary button hover */
+nav a:hover {
+  text-decoration: underline;
 }
 
-.btn--outline {
-    /* TODO: Outline button (bordered) */
-}
 
-.btn--outline:hover {
-    /* TODO: Outline button hover */
-}
-
-.btn--small {
-    /* TODO: Small button variant */
-}
-
-/* ============================================================
-   HEADER & NAVIGATION
-   TODO: Style navigation using Flexbox
-   Requirements:
-   - Fixed or sticky header
-   - Logo on left, nav links on right
-   - Mobile-friendly (links stack or hamburger menu)
-   ============================================================ */
-.header {
-    /* TODO: Style the header
-       Consider: position, background, padding, box-shadow, z-index */
-}
-
-.nav {
-    /* TODO: Use Flexbox for navigation layout
-     * - display: flex
-     * - justify-content: space-between
-     * - align-items: center
-     */
-}
-
-.nav__logo a {
-    /* TODO: Logo styles */
-}
-
-.nav__menu {
-    /* TODO: Style navigation menu
-       Mobile: Stack vertically or hide
-       Desktop: Horizontal with Flexbox */
-}
-
-.nav__menu a {
-    /* TODO: Navigation link styles */
-}
-
-.nav__menu a:hover {
-    /* TODO: Navigation link hover */
-}
-
-/* ============================================================
+/* -------------------------------
    HERO SECTION
-   TODO: Style hero section
-   ============================================================ */
-.hero {
-    /* TODO: Style hero section
-       Consider: min-height, background, centering content
-       Use Flexbox for centering */
+--------------------------------*/
+
+#home {
+  padding: 3rem 0;
 }
 
-.hero__content h1 {
-    /* TODO: Style your name */
+#home h2 {
+  margin-bottom: 1rem;
 }
 
-.hero__tagline {
-    /* TODO: Style tagline */
+#home a {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
 }
 
-/* ============================================================
+
+/* -------------------------------
    ABOUT SECTION
-   TODO: Style about section using CSS Grid or Flexbox
-   ============================================================ */
-.about {
-    /* TODO: Section padding */
+--------------------------------*/
+
+#about {
+  padding: 3rem 0;
 }
 
-.about h2 {
-    /* TODO: Section heading */
+#about img {
+  max-width: 200px;
+  margin: 1rem 0;
 }
 
-.about__content {
-    /* TODO: Use CSS Grid or Flexbox for layout
-       Mobile: Stack image above text
-       Desktop: Side by side */
+#about ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
 }
 
-.about__image img {
-    /* TODO: Style profile image */
+
+/* -------------------------------
+   PROJECTS SECTION (CSS GRID)
+--------------------------------*/
+
+#projects {
+  padding: 3rem 0;
 }
 
-.about__text p {
-    /* TODO: Paragraph styles */
-}
-
-.about__text h3 {
-    /* TODO: Subheading styles */
-}
-
-.skills-list {
-    /* TODO: Style skills list
-       Consider: Flexbox, tags/badges style */
-}
-
-.skills-list li {
-    /* TODO: Individual skill badge */
-}
-
-/* ============================================================
-   PROJECTS SECTION
-   TODO: Style projects using CSS Grid
-   ============================================================ */
-.projects {
-    /* TODO: Section styling */
-}
-
-.projects h2 {
-    /* TODO: Section heading */
-}
-
-.projects__grid {
-    /* TODO: Use CSS Grid for project cards
-       Mobile: 1 column
-       Tablet: 2 columns
-       Desktop: 3 columns */
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .project-card {
-    /* TODO: Style project cards
-     * - background, border-radius, overflow
-     * - box-shadow, transition
-     */
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  background: white;
 }
 
-.project-card:hover {
-    /* TODO: Card hover effect */
+.project-card h3 {
+  margin: 0.5rem 0;
 }
 
-.project-card img {
-    /* TODO: Project image */
+.project-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--primary-color);
 }
 
-.project-card__content {
-    /* TODO: Card content area */
-}
 
-.project-card__content h3 {
-    /* TODO: Project title */
-}
-
-.project-card__content p {
-    /* TODO: Project description */
-}
-
-.project-card__links {
-    /* TODO: Links container (Flexbox) */
-}
-
-/* ============================================================
+/* -------------------------------
    CONTACT SECTION
-   TODO: Style contact form
-   ============================================================ */
-.contact {
-    /* TODO: Section styling */
+--------------------------------*/
+
+#contact {
+  padding: 3rem 0;
 }
 
-.contact h2 {
-    /* TODO: Section heading */
+form {
+  max-width: 500px;
 }
 
-.contact__form {
-    /* TODO: Style contact form
-       Consider: max-width, centering */
+label {
+  display: block;
+  margin-top: 1rem;
 }
 
-.form-group {
-    /* TODO: Form group spacing */
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
 }
 
-.form-group label {
-    /* TODO: Label styles */
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.form-group input,
-.form-group textarea {
-    /* TODO: Style form inputs
-     * - width: 100%
-     * - padding, border, border-radius
-     * - font-family, font-size
-     * - transition
-     */
-}
 
-.form-group input:focus,
-.form-group textarea:focus {
-    /* TODO: Focus state */
-}
-
-.form-group textarea {
-    /* TODO: Textarea specific styles */
-}
-
-/* ============================================================
+/* -------------------------------
    FOOTER
-   TODO: Style footer
-   ============================================================ */
-.footer {
-    /* TODO: Footer styling
-     * - background, color, padding
-     * - text-align
-     */
+--------------------------------*/
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--secondary-color);
+  color: white;
 }
 
-.footer .container {
-    /* TODO: Footer layout (Flexbox) */
-}
 
-.footer__social {
-    /* TODO: Social links container */
-}
+/* --------------------------------
+   TABLET BREAKPOINT
+--------------------------------*/
 
-.footer__social a {
-    /* TODO: Social link styles */
-}
-
-.footer__social a:hover {
-    /* TODO: Social link hover */
-}
-
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-   TODO: Implement mobile-first responsive design
-
-   Start with mobile styles above, then add complexity
-   for larger screens below.
-   ============================================================ */
-
-/* Tablet (768px and up) */
 @media (min-width: 768px) {
-    /* TODO: Add tablet styles
-       - Adjust typography sizes
-       - Change layouts (Grid columns, Flexbox directions)
-       - Adjust spacing */
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
 
-/* Desktop (1024px and up) */
+
+/* --------------------------------
+   DESKTOP BREAKPOINT
+--------------------------------*/
+
 @media (min-width: 1024px) {
-    /* TODO: Add desktop styles
-       - Further layout adjustments
-       - Larger typography
-       - More spacing */
+
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
 
-/* Large Desktop (1200px and up) */
+
+/* --------------------------------
+   LARGE DESKTOP (OPTIONAL)
+--------------------------------*/
+
 @media (min-width: 1200px) {
-    /* TODO: Add large desktop styles (optional) */
-}
 
-/* ============================================================
-   ADDITIONAL STYLES
-   TODO: Add any additional styles you need
-   ============================================================ */
+  main {
+    padding: 3rem;
+  }
+
+}
